@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2581c7ae-94fa-4771-ac7f-9a63faf62759" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Sean Dunlop" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\gecko\Desktop\AuthProject\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1lFjk35m06otx9MzzF4HhT1hlFQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <module name="AuthProject" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2581c7ae-94fa-4771-ac7f-9a63faf62759" name="Default Changelist" comment="" />
+      <created>1607199872709</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607199872709</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="614" y="116" key="CommitChangelistDialog2" timestamp="1607200431695">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="116" key="CommitChangelistDialog2/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607200431695" />
+    <state x="794" y="435" width="356" height="169" key="Github.CreateGistDialog" timestamp="1607199976410">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="435" width="356" height="169" key="Github.CreateGistDialog/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607199976410" />
+    <state x="833" y="413" width="522" height="214" key="Github.ShareDialog" timestamp="1607200284725">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="833" y="413" width="522" height="214" key="Github.ShareDialog/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607200284725" />
+    <state x="759" y="225" key="Github.UntrackedFilesDialog" timestamp="1607200323829">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="759" y="225" key="Github.UntrackedFilesDialog/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607200323829" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1607200454969">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607200454969" />
+    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607200444195">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607200444195" />
+  </component>
+</project>
