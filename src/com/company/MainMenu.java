@@ -16,7 +16,7 @@ public class MainMenu extends JFrame{
     Util u = new Util();
 
     
-    int[] password = new int[3];
+    int[] password = new int[]{-1,-1,-1};
 
     Font fnt_title = new Font("Tahoma", Font.BOLD, 30);
 
@@ -65,6 +65,7 @@ public class MainMenu extends JFrame{
         setSize(445,400); //size of window
         setLayout(null); //removes default layout
         setVisible(true); //makes frame visible
+
 
         forge();
 

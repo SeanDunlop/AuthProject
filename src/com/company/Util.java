@@ -58,12 +58,50 @@ public class Util {
         icons[46] = new ImageIcon("048-tower.png");
         icons[47] = new ImageIcon("049-castle.png");
         icons[48] = new ImageIcon("050-fairytale.png");
-        
-        for(ImageIcon i : icons){
-            i = new ImageIcon(i.getImage().getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH));
-        }
 
+        /*
+        for(int x = 0; x < 49; x++){
+            icons[x] = new ImageIcon(icons[x].getImage().getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH));
+        }
+        */
         return icons;
+    }
+
+    public boolean passEmpty(int[] i){
+        boolean flag = false;
+        for(int _i : i){
+            if(_i == -1){
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
+    public boolean contains(int[] _i, int x){
+        for(int i : _i){
+            if(i == x){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int firstEmpty(int[] _i){
+        for(int x = 0; x < 3; x++){
+            if(_i[x] == -1){
+                return x;
+            }
+        }
+        return -1;
+    }
+
+    public int find(int[] i, int x){
+        for(int n = 0; n < 3; n++){
+            if(x == i[n]){
+                return n;
+            }
+        }
+        return -1;
     }
 
     public void sysout(Object... o){
