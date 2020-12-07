@@ -46,15 +46,16 @@ public class SelectScreen extends JFrame{
                         password[u.firstEmpty(password)] = x;
                         u.sysout(password[0] + " " + password[1] + " " + password[2]);
 
-                        //Do button make bigger
+                        //Do button make smaller
+                        u.makeButtonSmaller((JButton)evt.getSource());
 
                     }else if(u.contains(password, x)){
                         //Turn the button off
                         password[u.find(password, x)] = -1;
                         u.sysout(password[0] + " " + password[1] + " " + password[2]);
-                        
-                        //Do button make smaller
 
+                        //Do button make bigger
+                        u.makeButtonBigger((JButton)evt.getSource());
                     }
                     u.sysout(x);
                 }

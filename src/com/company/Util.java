@@ -114,4 +114,19 @@ public class Util {
         }
     }
 
+    public void makeButtonSmaller(JButton b){
+        Rectangle r = b.getBounds();
+        r.grow(-10,-10);
+        b.setBounds(r);
+        ImageIcon i = new ImageIcon(icons()[Integer.parseInt(b.getText())].getImage().getScaledInstance(90, 90,  java.awt.Image.SCALE_SMOOTH));
+        b.setIcon(i);
+    }
+
+    public void makeButtonBigger(JButton b){
+        Rectangle r = b.getBounds();
+        r.grow(10,10);
+        b.setBounds(r);
+        ImageIcon i = new ImageIcon(icons()[Integer.parseInt(b.getText())].getImage().getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH));
+        b.setIcon(i);
+    }
 }
