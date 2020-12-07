@@ -14,25 +14,31 @@ public class SelectScreen extends JFrame{
     int[] password;
     MainMenu menu;
 
+    JLabel lbl_title = new JLabel("Please Select 3 Icons");
+
     Util u = new Util();
 
     JButton[] arr_btn = new JButton[49];
 
-    boolean[] arr_select = new boolean[49];
-
     Font fnt_btn = new Font("Tahoma", Font.BOLD, 1);
+    Font fnt_title = new Font("Tahoma", Font.BOLD, 30);
 
     public void forge(){
-        for(boolean b : arr_select){
-            b = false;
-        }
-
         ImageIcon[] icons = u.icons();
+
+        lbl_title.setHorizontalAlignment(0);
+        lbl_title.setFont(fnt_title);
+        lbl_title.setBounds(0,30,820,30);
+        lbl_title.setVisible(true);
+        add(lbl_title);
 
         for(int x = 0; x < arr_btn.length; x++){
             arr_btn[x] = new JButton(String.valueOf(x));
             arr_btn[x].setIcon(new ImageIcon(icons[x].getImage().getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH)));
             arr_btn[x].setBounds(10+(110*(x%7)), (int) (100 + (110 * (Math.floor(x / 7)))), 100, 100);
+            if(u.contains(password, x)){
+                u.makeButtonSmaller(arr_btn[x]);
+            }
             arr_btn[x].setVisible(true);
             arr_btn[x].setHorizontalAlignment(0);
             arr_btn[x].setFont(fnt_btn);
