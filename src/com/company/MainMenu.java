@@ -15,6 +15,7 @@ public class MainMenu extends JFrame{
 
     Util u = new Util();
 
+    
     int[] password = new int[3];
 
     Font fnt_title = new Font("Tahoma", Font.BOLD, 30);

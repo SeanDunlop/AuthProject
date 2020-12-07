@@ -2,62 +2,67 @@ package com.company;
 
 import javax.swing.*;
 import java.util.*;
+import java.awt.*;
 
 public class Util {
 
     public ImageIcon[] icons(){
         ImageIcon[] icons = new ImageIcon[49];
 
-        icons[0] = new ImageIcon("001-knight");
-        icons[1] = new ImageIcon("002-wizard");
-        icons[2] = new ImageIcon("003-dwarf");
-        icons[3] = new ImageIcon("004-elf");
-        icons[4] = new ImageIcon("005-witch");
-        icons[5] = new ImageIcon("006-ogre");
-        icons[6] = new ImageIcon("007-giant");
-        icons[7] = new ImageIcon("008-gnome");
-        icons[8] = new ImageIcon("009-hood");
-        icons[9] = new ImageIcon("010-wolf");
-        icons[10] = new ImageIcon("011-queen");
-        icons[11] = new ImageIcon("012-king");
-        icons[12] = new ImageIcon("013-princess");
-        icons[13] = new ImageIcon("014-prince");
-        icons[15] = new ImageIcon("015-frogprince");
-        icons[16] = new ImageIcon("016-fairy");
-        icons[17] = new ImageIcon("017-robinhood");
-        icons[18] = new ImageIcon("018-pirate");
-        icons[19] = new ImageIcon("019-goblin");
-        icons[20] = new ImageIcon("020-elf");
-        icons[21] = new ImageIcon("021-pig");
-        icons[22] = new ImageIcon("022-tinman");
-        icons[23] = new ImageIcon("023-scarecrow");
-        icons[24] = new ImageIcon("024-cowardlylion");
-        icons[25] = new ImageIcon("025-pinocchio");
-        icons[26] = new ImageIcon("026-puss");
-        icons[27] = new ImageIcon("027-hatter");
-        icons[28] = new ImageIcon("028-cyclops");
-        icons[29] = new ImageIcon("029-whiterabbit");
-        icons[30] = new ImageIcon("030-mermaid");
-        icons[31] = new ImageIcon("031-genie");
-        icons[32] = new ImageIcon("032-vampire");
-        icons[33] = new ImageIcon("033-unicorn");
-        icons[34] = new ImageIcon("034-dragon");
-        icons[35] = new ImageIcon("035-phoenix");
-        icons[36] = new ImageIcon("036-poison");
-        icons[37] = new ImageIcon("037-poison");
-        icons[38] = new ImageIcon("038-caludron");
-        icons[39] = new ImageIcon("039-poisonous");
-        icons[40] = new ImageIcon("040-magicmirror");
-        icons[41] = new ImageIcon("041-excalibur");
-        icons[42] = new ImageIcon("043-magiclamp");
-        icons[43] = new ImageIcon("044-crystalball");
-        icons[44] = new ImageIcon("045-ring");
-        icons[45] = new ImageIcon("046-broom");
-        icons[46] = new ImageIcon("047-wand");
-        icons[47] = new ImageIcon("048-tower");
-        icons[48] = new ImageIcon("049-castle");
-        icons[49] = new ImageIcon("050-fairytale");
+        icons[0] = new ImageIcon("001-knight.png");
+        icons[1] = new ImageIcon("002-wizard.png");
+        icons[2] = new ImageIcon("003-dwarf.png");
+        icons[3] = new ImageIcon("004-elf.png");
+        icons[4] = new ImageIcon("005-witch.png");
+        icons[5] = new ImageIcon("006-ogre.png");
+        icons[6] = new ImageIcon("007-giant.png");
+        icons[7] = new ImageIcon("008-gnome.png");
+        icons[8] = new ImageIcon("009-hood.png");
+        icons[9] = new ImageIcon("010-wolf.png");
+        icons[10] = new ImageIcon("011-queen.png");
+        icons[11] = new ImageIcon("012-king.png");
+        icons[12] = new ImageIcon("013-princess.png");
+        icons[13] = new ImageIcon("014-prince.png");
+        icons[14] = new ImageIcon("015-frogprince.png");
+        icons[15] = new ImageIcon("016-fairy.png");
+        icons[16] = new ImageIcon("017-robinhood.png");
+        icons[17] = new ImageIcon("018-pirate.png");
+        icons[18] = new ImageIcon("019-goblin.png");
+        icons[19] = new ImageIcon("020-elf.png");
+        icons[20] = new ImageIcon("021-pig.png");
+        icons[21] = new ImageIcon("022-tinman.png");
+        icons[22] = new ImageIcon("023-scarecrow.png");
+        icons[23] = new ImageIcon("024-cowardlylion.png");
+        icons[24] = new ImageIcon("025-pinocchio.png");
+        icons[25] = new ImageIcon("026-puss.png");
+        icons[26] = new ImageIcon("027-hatter.png");
+        icons[27] = new ImageIcon("028-cyclops.png");
+        icons[28] = new ImageIcon("029-whiterabbit.png");
+        icons[29] = new ImageIcon("030-mermaid.png");
+        icons[30] = new ImageIcon("031-genie.png");
+        icons[31] = new ImageIcon("032-vampire.png");
+        icons[32] = new ImageIcon("033-unicorn.png");
+        icons[33] = new ImageIcon("034-dragon.png");
+        icons[34] = new ImageIcon("035-phoenix.png");
+        icons[35] = new ImageIcon("036-poison.png");
+        icons[36] = new ImageIcon("037-poison.png");
+        icons[37] = new ImageIcon("038-cauldron.png");
+        icons[38] = new ImageIcon("039-poisonous.png");
+        icons[39] = new ImageIcon("040-magicmirror.png");
+        icons[40] = new ImageIcon("041-excalibur.png");
+        icons[41] = new ImageIcon("043-magiclamp.png");
+        icons[42] = new ImageIcon("044-crystalball.png");
+        icons[43] = new ImageIcon("045-ring.png");
+        icons[44] = new ImageIcon("046-broom.png");
+        icons[45] = new ImageIcon("047-wand.png");
+        icons[46] = new ImageIcon("048-tower.png");
+        icons[47] = new ImageIcon("049-castle.png");
+        icons[48] = new ImageIcon("050-fairytale.png");
         
+        for(ImageIcon i : icons){
+            i = new ImageIcon(i.getImage().getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH));
+        }
+
         return icons;
     }
 
