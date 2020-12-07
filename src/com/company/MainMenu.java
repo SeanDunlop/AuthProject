@@ -11,7 +11,11 @@ public class MainMenu extends JFrame{
     JButton btn_set = new JButton("Button");
     JButton btn_go = new JButton("Other Button");
     
+    JLabel lbl_credit = new JLabel("Icons made by Freepik from www.flaticon.com");
+
     Util u = new Util();
+
+    int[] password = new int[3];
 
     Font fnt_title = new Font("Tahoma", Font.BOLD, 30);
 
@@ -22,13 +26,19 @@ public class MainMenu extends JFrame{
         lbl_title.setVisible(true);
         add(lbl_title);
 
+        lbl_credit.setBounds(10,300,420,30);
+        lbl_credit.setHorizontalAlignment(0);
+        lbl_credit.setVisible(true);
+        add(lbl_credit);
+
         btn_set.setBounds(10,85,200,40);
         btn_set.setVisible(true);
         add(btn_set);
         
         btn_set.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_setClicked(evt);
+                SelectScreen set = new SelectScreen(password, getSelf());
+                setVisible(false);
             }
         });
 
@@ -38,9 +48,13 @@ public class MainMenu extends JFrame{
 
         btn_go.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_goClicked(evt);
+                //btn_goClicked(evt);
             }
         });
+    }
+
+    public MainMenu getSelf(){
+        return this;
     }
 
     public MainMenu(){
