@@ -87,7 +87,7 @@ public class Util {
     }
 
     public int firstEmpty(int[] _i){
-        for(int x = 0; x < 3; x++){
+        for(int x = 0; x < _i.length; x++){
             if(_i[x] == -1){
                 return x;
             }
@@ -96,7 +96,7 @@ public class Util {
     }
 
     public int find(int[] i, int x){
-        for(int n = 0; n < 3; n++){
+        for(int n = 0; n < i.length; n++){
             if(x == i[n]){
                 return n;
             }
