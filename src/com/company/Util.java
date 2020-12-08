@@ -67,38 +67,54 @@ public class Util {
         return icons;
     }
 
-    public boolean passEmpty(int[] i){
+    public boolean compareArr(int[] arr1, int[] arr2)
+    {
+        int matches = 0;
+        for(int val1 : arr1)
+        {
+            for(int val2 : arr2)
+            {
+                if(val2 == val1)
+                {
+                    matches++;
+                }
+            }
+        }
+        return (matches == 3);
+    }
+
+    public boolean passEmpty(int[] input){
         boolean flag = false;
-        for(int _i : i){
-            if(_i == -1){
+        for(int val : input){
+            if(val == -1){
                 flag = true;
             }
         }
         return flag;
     }
 
-    public boolean contains(int[] _i, int x){
-        for(int i : _i){
-            if(i == x){
+    public boolean contains(int[] inputArr, int target){
+        for(int i : inputArr){
+            if(i == target){
                 return true;
             }
         }
         return false;
     }
 
-    public int firstEmpty(int[] _i){
-        for(int x = 0; x < 3; x++){
-            if(_i[x] == -1){
-                return x;
+    public int firstEmpty(int[] inputArr){
+        for(int i = 0; i < 3; i++){
+            if(inputArr[i] == -1){
+                return i;
             }
         }
         return -1;
     }
 
-    public int find(int[] i, int x){
-        for(int n = 0; n < 3; n++){
-            if(x == i[n]){
-                return n;
+    public int find(int[] inputArr, int target){
+        for(int i = 0; i < 3; i++){
+            if(target == inputArr[i]){
+                return i;
             }
         }
         return -1;

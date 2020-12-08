@@ -1,17 +1,17 @@
 package com.company;
 
 import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.*;
-import java.awt.*;
-
-public class SelectScreen extends JFrame{
-
+import java.awt.image.AreaAveragingScaleFilter;
+import java.util.Collections;
+import java.util.ArrayList;
+public class AuthenticationScreen extends JFrame {
     //https://stackoverflow.com/questions/2856480/resizing-a-imageicon-in-a-jbutton
     int[] password;
+    int[] attempt;
+
     MainMenu menu;
 
     JLabel lbl_title = new JLabel("Please Select 3 Icons");
@@ -23,6 +23,8 @@ public class SelectScreen extends JFrame{
     Font fnt_btn = new Font("Tahoma", Font.BOLD, 1);
     Font fnt_title = new Font("Tahoma", Font.BOLD, 30);
 
+    ArrayList<Integer> indices;
+
     public void forge(){
         ImageIcon[] icons = u.icons();
 
@@ -32,14 +34,22 @@ public class SelectScreen extends JFrame{
         lbl_title.setVisible(true);
         add(lbl_title);
 
+        indices = new ArrayList<>();
+        for(int i = 0; i < arr_btn.length; i++)
+        {
+            indices.add(i);
+        }
+        Collections.shuffle(indices);
+        int x;
+        for(int i = 0; i < arr_btn.length; i++){
 
-        for(int x = 0; x < arr_btn.length; x++){
+            x = indices.get(i);
             arr_btn[x] = new JButton(String.valueOf(x));
             arr_btn[x].setIcon(new ImageIcon(icons[x].getImage().getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH)));
-            arr_btn[x].setBounds(10+(110*(x%7)), (int) (100 + (110 * (Math.floor(x / 7)))), 100, 100);
-            if(u.contains(password, x)){
-                u.makeButtonSmaller(arr_btn[x]);
-            }
+            arr_btn[x].setBounds(10+(110*(i%7)), (int) (100 + (110 * (Math.floor(i / 7)))), 100, 100);
+            //if(u.contains(password, x)){
+            //    u.makeButtonSmaller(arr_btn[x]);
+            //}
             arr_btn[x].setVisible(true);
             arr_btn[x].setHorizontalAlignment(0);
             arr_btn[x].setFont(fnt_btn);
@@ -47,32 +57,38 @@ public class SelectScreen extends JFrame{
 
             arr_btn[x].addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
+
                     int x = Integer.parseInt(((JButton)evt.getSource()).getText());
-                    if(u.passEmpty(password) && !u.contains(password,x)){
+
+                    if(u.passEmpty(attempt) && !u.contains(attempt,x)){
                         //Turn the button on
-                        password[u.firstEmpty(password)] = x;
-                        u.sysout(password[0] + " " + password[1] + " " + password[2]);
+                        attempt[u.firstEmpty(attempt)] = x;
+                        u.sysout(attempt[0] + " " + attempt[1] + " " + attempt[2]);
 
                         //Do button make smaller
                         u.makeButtonSmaller((JButton)evt.getSource());
 
-                    }else if(u.contains(password, x)){
+                    }else if(u.contains(attempt, x)){
                         //Turn the button off
-                        password[u.find(password, x)] = -1;
-                        u.sysout(password[0] + " " + password[1] + " " + password[2]);
+                        attempt[u.find(attempt, x)] = -1;
+                        u.sysout(attempt[0] + " " + attempt[1] + " " + attempt[2]);
 
                         //Do button make bigger
                         u.makeButtonBigger((JButton)evt.getSource());
                     }
                     u.sysout(x);
+                    if(u.compareArr(password, attempt))
+                    {
+                        u.sysout("You did it!");
+                    }
                 }
             });
         }
     }
 
-    
 
-    public SelectScreen(int[] _password, MainMenu _menu){
+
+    public AuthenticationScreen(int[] _password, MainMenu _menu){
         super("Selection Menu"); //sets title of window
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -90,8 +106,10 @@ public class SelectScreen extends JFrame{
         setVisible(true); //makes frame visible
 
         password = _password;
+        attempt = new int[]{-1,-1,-1};
         menu = _menu;
 
         forge();
     }
+
 }

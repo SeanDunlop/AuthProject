@@ -49,6 +49,13 @@ public class MainMenu extends JFrame{
 
         btn_go.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AuthenticationScreen set = new AuthenticationScreen(password, getSelf());
+                setVisible(false);
+            }
+        });
+
+        btn_go.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 //btn_goClicked(evt);
             }
         });
