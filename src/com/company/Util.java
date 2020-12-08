@@ -102,19 +102,19 @@ public class Util {
         return false;
     }
 
-    public int firstEmpty(int[] _i){
-        for(int x = 0; x < _i.length; x++){
-            if(_i[x] == -1){
+    public int firstEmpty(int[] inputArr){
+        for(int x = 0; x < inputArr.length; x++){
+            if(inputArr[x] == -1){
                 return x;
             }
         }
         return -1;
     }
 
-    public int find(int[] i, int x){
-        for(int n = 0; n < i.length; n++){
-            if(x == i[n]){
-                return n;
+    public int find(int[] inputArr, int target){
+        for(int i = 0; i < inputArr.length; i++){
+            if(target == inputArr[i]){
+                return i;
             }
         }
         return -1;
