@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2581c7ae-94fa-4771-ac7f-9a63faf62759" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/AuthenticationScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AuthenticationScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/SelectScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/SelectScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607661489315</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="- added comment code and removed some unused functions">
+      <created>1607715832986</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607715832986</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -133,7 +138,8 @@
     <MESSAGE value="- refactored util class to have usable variable names&#10;- made authscreen check if you selected same 3 icons, if so it prints &quot;You did it!&quot;" />
     <MESSAGE value="- merged the .length checks with non-terrible variable names" />
     <MESSAGE value="- Added everything" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added everything" />
+    <MESSAGE value="- added comment code and removed some unused functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added comment code and removed some unused functions" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Project_Structure" timestamp="1607660664289">
@@ -144,10 +150,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="870" y="156" key="#com.intellij.ide.util.MemberChooser/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607653152890" />
-    <state x="408" y="97" key="CommitChangelistDialog2" timestamp="1607715812640">
+    <state x="408" y="97" key="CommitChangelistDialog2" timestamp="1607715832311">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="408" y="97" key="CommitChangelistDialog2/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607715812640" />
+    <state x="408" y="97" key="CommitChangelistDialog2/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607715832311" />
     <state width="424" height="466" key="DebuggerActiveHint" timestamp="1607657844560">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -204,10 +210,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="672" y="235" key="MultipleFileMergeDialog/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607467689331" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1607661493320">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1607716090626">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607661493320" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.77.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607716090626" />
     <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607652235523">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

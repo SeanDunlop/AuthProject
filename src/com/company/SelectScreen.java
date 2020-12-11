@@ -40,7 +40,7 @@ public class SelectScreen extends JFrame{
         ok_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(u.firstEmpty(password) != -1)
+                if(u.firstEmpty(password) != -1) // check that the user has created a full password before letting them submit
                 {
                     ok_btn.setText("Select 3 Icons");
                 }
