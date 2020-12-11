@@ -3,15 +3,19 @@ package com.company;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.*;
 
 public class MainMenu extends JFrame{
-    JLabel lbl_title = new JLabel("This is the Title");
-    JButton btn_set = new JButton("Button");
-    JButton btn_go = new JButton("Other Button");
+    JLabel lbl_title = new JLabel("Authentication Demo");
+    JButton btn_set = new JButton("Set Password");
+    JButton btn_go = new JButton("Test Authentication");
+    JButton btn_help = new JButton("Help");
     
     JLabel lbl_credit = new JLabel("Icons made by Freepik from www.flaticon.com");
+    JLabel lbl_result = new JLabel("Please create a password");
 
     Util u = new Util();
 
@@ -32,6 +36,11 @@ public class MainMenu extends JFrame{
         lbl_credit.setVisible(true);
         add(lbl_credit);
 
+        lbl_result.setBounds(10,270,420,30);
+        lbl_result.setHorizontalAlignment(0);
+        lbl_result.setVisible(true);
+        add(lbl_result);
+
         btn_set.setBounds(10,85,200,40);
         btn_set.setVisible(true);
         add(btn_set);
@@ -46,6 +55,18 @@ public class MainMenu extends JFrame{
         btn_go.setBounds(220,85,200,40);
         btn_go.setVisible(true);
         add(btn_go);
+
+        btn_help.setBounds(110,130,200,40);
+        btn_help.setVisible(true);
+        btn_help.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                HelpScreen help = new HelpScreen(MainMenu.this);
+                setVisible(false);
+            }
+        });
+        add(btn_help);
+
 
         btn_go.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,14 +87,19 @@ public class MainMenu extends JFrame{
     }
 
     public MainMenu(){
+        this(new int[]{-1,-1,-1}, "Please create a password");
+    }
+
+    public MainMenu(int[] _password, String result)
+    {
         super("Authentication Menu"); //sets title of window
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //program ends on closing of window
         setResizable(false);
         setSize(445,400); //size of window
         setLayout(null); //removes default layout
         setVisible(true); //makes frame visible
-
-
+        password  = _password;
+        lbl_result.setText(result);
         forge();
 
         u.sysout("hey");

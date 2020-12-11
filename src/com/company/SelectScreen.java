@@ -2,6 +2,7 @@ package com.company;
 
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -19,6 +20,7 @@ public class SelectScreen extends JFrame{
     Util u = new Util();
 
     JButton[] arr_btn = new JButton[49];
+    JButton ok_btn = new JButton("Save");
 
     Font fnt_btn = new Font("Tahoma", Font.BOLD, 1);
     Font fnt_title = new Font("Tahoma", Font.BOLD, 30);
@@ -32,6 +34,24 @@ public class SelectScreen extends JFrame{
         lbl_title.setVisible(true);
         add(lbl_title);
 
+        this.setSize(820,1000);
+        ok_btn.setBounds(230,870,320,80);
+        ok_btn.setVisible(true);
+        ok_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(u.firstEmpty(password) != -1)
+                {
+                    ok_btn.setText("Select 3 Icons");
+                }
+                else
+                    {
+                        close();
+                    }
+
+            }
+        });
+        add(ok_btn);
 
         for(int x = 0; x < arr_btn.length; x++){
             arr_btn[x] = new JButton(String.valueOf(x));
@@ -70,7 +90,10 @@ public class SelectScreen extends JFrame{
         }
     }
 
-    
+    public void close()
+    {
+        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+    }
 
     public SelectScreen(int[] _password, MainMenu _menu){
         super("Selection Menu"); //sets title of window
@@ -81,6 +104,7 @@ public class SelectScreen extends JFrame{
                 //SEND VALUES BACK TO THING
                 setVisible(false);
                 menu.setVisible(true);
+                menu.lbl_result.setText("Try using the password");
                 dispose();
             }
         });

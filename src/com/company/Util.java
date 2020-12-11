@@ -83,6 +83,22 @@ public class Util {
         return (matches == 3);
     }
 
+    public int numberOfMatches(int[] arr1, int[] arr2)
+    {
+        int matches = 0;
+        for(int val1 : arr1)
+        {
+            for(int val2 : arr2)
+            {
+                if(val2 == val1)
+                {
+                    matches++;
+                }
+            }
+        }
+        return (matches);
+    }
+
     public boolean passEmpty(int[] input){
         boolean flag = false;
         for(int val : input){
@@ -126,6 +142,16 @@ public class Util {
                 System.out.println(_o);
             }else{
                 System.out.println(_o.toString());
+            }
+        }
+    }
+
+    public void sysline(Object... o){
+        for(Object _o : o){
+            if(_o.getClass().isPrimitive() || _o.getClass().equals(String.class)){
+                System.out.print(_o);
+            }else{
+                System.out.print(_o.toString());
             }
         }
     }
