@@ -8,44 +8,48 @@ import java.awt.event.*;
 import java.util.*;
 
 public class AuthenticationScreen extends JFrame {
-    //https://stackoverflow.com/questions/2856480/resizing-a-imageicon-in-a-jbutton
-    int[] password;
-    int[] attempt;
-    int[] selected;
-    LinkedList<Integer> dragSelected;
-    boolean dragging;
 
-    Challenge challenge;
 
-    final int DIMENSION = 7;
+    int[] password; // the user's password
+    int[] attempt; //  The current attempt's selected indices
 
-    MainMenu menu;
 
-    JLabel lbl_title = new JLabel("Select at least 2 target icons");
+    LinkedList<Integer> dragSelected; // The queue of icons selected by dragging - uses FIFO with capacity of 10
+    boolean dragging; // if the user is currently dragging the mouse
 
-    Util u = new Util();
+    Challenge challenge; // the current challenge object
 
-    JButton[] arr_btn = new JButton[49];
-    JButton enter_btn = new JButton("OK");
+    final int DIMENSION = 7; // The width/height of the display - Only change if we have a different image set
+
+    MainMenu menu; // the menu object we came from
+
+    JLabel lbl_title = new JLabel("Select at least 2 target icons"); // title label
+
+    Util u = new Util(); // utility class for some array functions as well as the image loader
+
+    JButton[] arr_btn = new JButton[49]; // the array of buttons to select
+    JButton enter_btn = new JButton("OK"); // the ok button
 
     Font fnt_btn = new Font("Tahoma", Font.BOLD, 1);
     Font fnt_title = new Font("Tahoma", Font.BOLD, 30);
 
-    ArrayList<Integer> indices;
-    int[][] map = new int[7][7];
+    ArrayList<Integer> indices; // all of the button indices go here
 
-    LineBorder selectedBorder;
+    LineBorder selectedBorder; // the borders we use for indicating which icons are selected
     LineBorder deselectedBorder;
 
     public void forge(){
+
         ImageIcon[] icons = u.icons();
 
+        // set up the title label
         lbl_title.setHorizontalAlignment(0);
         lbl_title.setFont(fnt_title);
         lbl_title.setBounds(0,30,820,30);
         lbl_title.setVisible(true);
         add(lbl_title);
 
+        // put all of the indices into a list and shuffle it so we have a random layout of the icons
         indices = new ArrayList<>();
         for(int i = 0; i < arr_btn.length; i++)
         {
@@ -53,102 +57,44 @@ public class AuthenticationScreen extends JFrame {
         }
         Collections.shuffle(indices);
 
+        // if challenge is real, put first target image in earliest position, otherwise make sure it isn't first
         if(challenge.getCurrent() == 1)
         {
             setPassFirst(indices, password);
         }else{setPassLast(indices, password);}
 
 
-        dragSelected = new LinkedList<>();
-
+        dragSelected = new LinkedList<>(); // our queue of selected images
 
         int x;
-        //JButton[][] buttonMap = new JButton[DIMENSION][DIMENSION];
         selectedBorder = new LineBorder(Color.GREEN, 4);
         deselectedBorder = new LineBorder(Color.GREEN, 0);
 
         this.addMouseListener(new dragSelectListener(this));
 
+        // set up the panel of icons as buttons
         for(int i = 0; i < arr_btn.length; i++){
 
             x = indices.get(i);
             arr_btn[x] = new JButton(String.valueOf(x));
             arr_btn[x].setIcon(new ImageIcon(icons[x].getImage().getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH)));
             arr_btn[x].setBounds(10+(110*(i%DIMENSION)), (int) (100 + (110 * (Math.floor(i / DIMENSION)))), 100, 100);
-            map[i%7][(int)Math.floor(i/7)] = x; // thats a mess
 
-            //if(u.contains(password, x)){
-            //    u.makeButtonSmaller(arr_btn[x]);
-            //}
             arr_btn[x].setVisible(true);
             arr_btn[x].setHorizontalAlignment(0);
             arr_btn[x].setFont(fnt_btn);
             add(arr_btn[x]);
 
-            //click to rectangle select code
-            /*
-            arr_btn[x].addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-
-                    int x = Integer.parseInt(((JButton)evt.getSource()).getText());
-
-                    if(u.passEmpty(attempt) && !u.contains(attempt,x)){
-                        //Turn the button on
-                        attempt[u.firstEmpty(attempt)] = x;
-                        //Do button make smaller
-                        u.makeButtonSmaller((JButton)evt.getSource());
-
-                        //update selected area
-                        if(u.firstEmpty(attempt) == -1)
-                        {
-                            selected = getValuesInRect(map, mapSearch(map, attempt[0]), mapSearch(map, attempt[1]));
-                            for(int i : indices)
-                            {
-                                arr_btn[i].setBorder(deselectedBorder);
-                            }
-                            for(int i : selected)
-                            {
-                                arr_btn[i].setBorder(selectedBorder);
-                            }
-                            printMap(map);
-                            for(int i = 0; i < selected.length; i++)u.sysline(selected[i] + ", ");
-
-                            if(checkSuccess(password, selected, 2))
-                            {
-                                u.sysout("You did it!");
-                            }
-                        }
-
-                    }else if(u.contains(attempt, x)){
-                        //Turn the button off
-                        attempt[u.find(attempt, x)] = -1;
-
-                        //Do button make bigger
-                        u.makeButtonBigger((JButton)evt.getSource());
-
-                        //clear selected area
-                        selected = new int[0];
-                        for(int i : indices)
-                        {
-                            arr_btn[i].setBorder(deselectedBorder);
-                        }
-                    }
-                }
-            });
-
-             */
             // listener for click
             arr_btn[x].addMouseListener(new dragSelectListener(this));
 
             //listener for drag
-
             int finalX = x;
             arr_btn[x].addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if(dragging)
                     {
-                        //u.sysout("DRAG");
                         if(!dragSelected.contains(finalX))
                         {
                             dragSelected.add(finalX);
@@ -202,21 +148,21 @@ public class AuthenticationScreen extends JFrame {
                     }
                     if(challenge.getCurrent() == 1)
                     {
-                        if(checkSuccess(password, selectedValues, 2) && !challenge.over)
+                        if(checkSuccess(password, selectedValues, 2) && !challenge.over) // go to next challenge and record this as a pass
                         {
                             selectedValues = new int[0];
                             u.sysout("You Did It");
                             startNextChallenge(1);
                             return;
                         }
-                        else if(!challenge.over)
+                        else if(!challenge.over) // keep going even if the user fails the check to not reveal anything
                         {
                             u.sysout("You failed, but moving on");
                             startNextChallenge(0);
                             return;
                         }
                     }
-                    else if(challenge.getCurrent() == 0 && !challenge.over)
+                    else if(challenge.getCurrent() == 0 && !challenge.over) // ignore the selected icons and count it as a pass anyways
                     {
                         u.sysout("That one didn't matter anyways!");
                         startNextChallenge(1);
@@ -228,30 +174,30 @@ public class AuthenticationScreen extends JFrame {
         add(enter_btn);
     }
 
-    public void unforge()
+    public void unforge() // clear the screen to re-create the panel
     {
         this.getContentPane().removeAll();
         this.getContentPane().repaint();
     }
 
-    public void startNextChallenge(int success)
+    public void startNextChallenge(int success) // go to the next challenge in the challenge set
     {
         challenge.getNext(success);
-        if(challenge.over && challenge.passed)
+        if(challenge.over && challenge.passed) // return to main menu with success message
         {
             u.sysout("We passed!");
             MainMenu menu = new MainMenu(password, "Authentication Successful");
             setVisible(false);
             //dispose();
         }
-        else if(challenge.over && !challenge.passed)
+        else if(challenge.over && !challenge.passed) // return to main menu with failed message
         {
             u.sysout("Failed!");
             MainMenu menu = new MainMenu(password, "Authentication Failed");
             setVisible(false);
             //dispose();
         }
-        else if(!challenge.over)
+        else if(!challenge.over) // challenge isn't over so we get the panel ready again
             {
                 unforge();
                 forge();
@@ -259,9 +205,9 @@ public class AuthenticationScreen extends JFrame {
     }
 
 
-    public boolean checkSuccess(int[] password, int[] selectedValues, int threshhold)
+    public boolean checkSuccess(int[] password, int[] selectedValues, int threshold) // threshold is how many of the target values must be selected
     {
-        if(u.numberOfMatches(password, selectedValues) >= threshhold)
+        if(u.numberOfMatches(password, selectedValues) >= threshold)
         {
             return true;
         }else return false;
@@ -273,7 +219,6 @@ public class AuthenticationScreen extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent event) {
-                //SEND VALUES BACK TO THING
                 setVisible(false);
                 menu.setVisible(true);
                 dispose();
@@ -293,7 +238,7 @@ public class AuthenticationScreen extends JFrame {
         forge();
     }
 
-    public void setPassFirst(ArrayList<Integer> indices, int[] password)
+    public void setPassFirst(ArrayList<Integer> indices, int[] password) // swap the locations of target images to make sure target 1 is in first position
     {
         if(u.firstEmpty(password) != -1)return;
         for(int i=1; i<password.length; i++)
@@ -310,12 +255,11 @@ public class AuthenticationScreen extends JFrame {
                     //swap them
                     indices.set(passIndex, password[0]);
                     indices.set(targetIndex,password[i]);
-                    //u.sysout("swapped");
             }
         }
     }
 
-    public void setPassLast(ArrayList<Integer> indices, int[] password)
+    public void setPassLast(ArrayList<Integer> indices, int[] password) // swap the locations of target images to make sure target 1 is not in first position
     {
         if(u.firstEmpty(password) != -1)return;
         for(int i=1; i<password.length; i++)
@@ -332,12 +276,11 @@ public class AuthenticationScreen extends JFrame {
                 //swap them
                 indices.set(passIndex, password[0]);
                 indices.set(targetIndex,password[i]);
-                u.sysout("swapped");
             }
         }
     }
 
-    public int[] getValuesInRect(int[][] map, int[]p1, int[]p2)
+    public int[] getValuesInRect(int[][] map, int[]p1, int[]p2) // used for rectangle selection, not called in this version
     {
         int x1 = p1[0];
         int x2 = p2[0];
@@ -346,6 +289,7 @@ public class AuthenticationScreen extends JFrame {
 
         ArrayList<Integer> result = new ArrayList<>();
 
+        // go through the selected area and grab all of the icon indices
         for(int x = Math.min(x1,x2); x <= Math.max(x1,x2); x++)
         {
             for(int y = Math.min(y1,y2); y <= Math.max(y1,y2); y++)
@@ -358,7 +302,7 @@ public class AuthenticationScreen extends JFrame {
         return finalResult;
     }
 
-    public int[] mapSearch(int[][] map, int target)
+    public int[] mapSearch(int[][] map, int target) // search a 2d array for a value - used for rectangle selection
     {
         int[] location = new int[]{-1,-1};
         for(int i = 0; i < map.length; i++)
@@ -375,7 +319,7 @@ public class AuthenticationScreen extends JFrame {
         return location;
     }
 
-    public int[] printMap(int[][] map)
+    public int[] printMap(int[][] map) // debugging function for the rectangle selection
     {
         System.out.print('\n');
         int[] location = new int[]{-1,-1};
@@ -392,6 +336,8 @@ public class AuthenticationScreen extends JFrame {
 
 }
 
+// challenge class represents a set of stages where the user must select some subset of their target images
+// fake stages allow user to input anything which makes guessing the target icons from OTS attacks more difficult
 class Challenge
 {
     public int challengeCount;
@@ -400,6 +346,7 @@ class Challenge
     public int[] results;
     boolean passed;
     boolean over;
+
 
     public Challenge(int count, int realCount)
     {
@@ -410,6 +357,7 @@ class Challenge
         passed = false;
         over = false;
 
+
         for(int i=0;i<challengeCount;i++)
         {
             if(i<realCount)
@@ -417,6 +365,7 @@ class Challenge
                 generated.add(1);
             }else generated.add(0);
         }
+        // shuffle the challenges so the locations of real/fake challenges are random
         Collections.shuffle(generated);
         for(int i = 0; i < generated.size(); i++)
         {
@@ -440,6 +389,7 @@ class Challenge
                 {
                     if(val ==0 ) temp = false;
                 }
+                // only pass if all results are 1 (success)
                 passed = temp;
                 over = true;
             }
@@ -452,7 +402,7 @@ class Challenge
     }
 
 }
-
+// custom mouseListener for adding to all of the buttons
 class dragSelectListener implements MouseListener
 {
     private AuthenticationScreen screen;

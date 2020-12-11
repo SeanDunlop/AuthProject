@@ -15,6 +15,8 @@ public class MainMenu extends JFrame{
     JButton btn_help = new JButton("Help");
     
     JLabel lbl_credit = new JLabel("Icons made by Freepik from www.flaticon.com");
+
+    // label used for the output of the last page the user was on
     JLabel lbl_result = new JLabel("Please create a password");
 
     Util u = new Util();
@@ -24,6 +26,7 @@ public class MainMenu extends JFrame{
 
     Font fnt_title = new Font("Tahoma", Font.BOLD, 30);
 
+    // function to put the GUI together
     public void forge(){
         lbl_title.setBounds(10,10,420,65);
         lbl_title.setFont(fnt_title);
@@ -67,7 +70,6 @@ public class MainMenu extends JFrame{
         });
         add(btn_help);
 
-
         btn_go.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AuthenticationScreen set = new AuthenticationScreen(password, getSelf());
@@ -75,11 +77,6 @@ public class MainMenu extends JFrame{
             }
         });
 
-        btn_go.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //btn_goClicked(evt);
-            }
-        });
     }
 
     public MainMenu getSelf(){
